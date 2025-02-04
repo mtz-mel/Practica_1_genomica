@@ -22,6 +22,6 @@ Aqui se observa las secuencias de los genes E y F, los cuales tienen sus corresp
 **Gen 5 y Gen 6; vista general.** ![](images/gen%208.jpg){width="447"}\
 Aqui se observa las secuencias de los genes E y F, los cuales tienen sus correspondientes secuencias mapeadas.
 
->>>>>>> Stashed changes
+
 **Gen 7; vista general.** ![](images/gen%207.jpg){width="548"}\
 En esta imagen se observa el gen 7. Transcrito G con el mapeo de secuencias.
