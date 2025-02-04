@@ -55,6 +55,14 @@ for (nombre_gen in names(genes)) {
 
 ## Gráfica
 
+library(ggplot2)
+
+G_AU<- ggplot( abundancia_subsecuencias_unicas, aes (x= Gen, y= Subsecuencias_unicas_por_gen , fill = Subsecuencias_unicas_por_gen)) + 
+  geom_bar(stat = "identity" ) +
+  labs (title = "Abundancia de subsecuencias únicas por Gen ", 
+         x= "Gen", y= "N de subsecuencias")
+
+print (G_AU)
 ################################################################################
 
 ## Después recopilamos en otra base de datos la cantidad de subsecuencias diferentes que 
