@@ -5,9 +5,9 @@ date: "2025-02-03"
 output: html_document
 ---
 
-## Evidencia fotografica.
+# Evidencia fotografica.
 
-**Gen A**
+## ^~**Gen\ A**~^
 
 ![](images/gen%201.jpg){width="451"}
 
@@ -15,20 +15,20 @@ output: html_document
 
 **Gen B**\
 ![](images/GEN2.jpg){width="451"}\
-**Figura 2** Mapeo del gen B.
+**Figura 2.** Mapeo del gen B.
 
 **Gen C**\
 ![](images/GEN3.jpg){width="451"}\
-**Figura 3** Mapeo del gen C
+**Figura 3.** Mapeo del gen C
 
 **Gen D**\
 ![](images/GEN4.jpg){width="451"}\
-**Figura 4** Mapeo gen D.
+**Figura 4.** Mapeo gen D.
 
 **Gen E y Gen F**\
 ![](images/gen%208.jpg){width="451"}\
-**Figura 5** Aqui se observa las secuencias de los genes E y F, los cuales tienen sus correspondientes secuencias mapeadas.
+**Figura 5.** Aqui se observa las secuencias de los genes E y F, los cuales tienen sus correspondientes secuencias mapeadas.
 
 **Gen 7.**\
 ![](images/gen%207.jpg){width="451"}\
-**Figura 6** En esta imagen se observa el gen 7. Transcrito G con el mapeo de secuencias.
+**Figura 6**.En esta imagen se observa el gen 7. Transcrito G con el mapeo de secuencias.
