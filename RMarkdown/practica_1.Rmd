@@ -47,7 +47,6 @@ Los mapeos ambiguos ocurren cuando una secuencia, en su mayoría corta, aparece 
 Durante esta práctica se hizo el mapeo físico, este fue complementado con el mapeo realizado por los ciclos for donde se buscó cada transcrito/subsecuencia, se realizó el conteo de cuantas veces en el gen.
 
 
-**Figura 6**.En esta imagen se observa el gen 7. Transcrito G con el mapeo de secuencias.
 
 ```{r}
 library(ggplot2)
@@ -56,6 +55,7 @@ G_AT<- ggplot( abundancia_subsecuencias_totales, aes (x= Gen, y=Total_subsecuenc
 
 print (G_AT)
 ```
+
 ```{r}
 library(ggplot2)
 
@@ -67,4 +67,4 @@ G_AU<- ggplot( abundancia_subsecuencias_unicas, aes (x= Gen, y= Subsecuencias_un
 print (G_AU)
 ```
 
->>>>>>> 704bb348c6e8f8186e435605c8ae2081c7dad852
+
