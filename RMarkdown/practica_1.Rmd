@@ -7,8 +7,8 @@ output: html_document
 
 ## Evidencia fotografica.
 
-**Gen 1; vista general.** ![](C:/6to%20semestre/genomica/clase-genomica-/gen%201.jpg){width="447"}\
-Aqui se observa las secuencias de los genes a.
+**Gen 1; vista general.** ![](FOTOS\gen%201.jpg%22){width="447"}\
+Aqui se observa las secuencias de los genes A.
 
 **Gen 5 y Gen 6; vista general.** ![](images/gen%208.jpg){width="447"}\
 Aqui se observa las secuencias de los genes E y F, los cuales tienen sus correspondientes secuencias mapeadas.
