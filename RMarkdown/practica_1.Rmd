@@ -6,7 +6,8 @@ output: html_document
 ---
 
 ## Evidencia fotografica.
-**Gen 1** 
+
+**Gen 1**
 
 **Gen 2**
 
@@ -15,6 +16,9 @@ output: html_document
 **Gen 4**
 
 **Gen 5 y Gen 6; vista general.** ![](images/gen%208.jpg){width="447"}\
+Aqui se observa las secuencias de los genes E y F, los cuales tienen sus correspondientes secuencias mapeadas.
+
+======= **Gen 5 y Gen 6; vista general.** ![](images/gen%208.jpg){width="447"}\
 Aqui se observa las secuencias de los genes E y F, los cuales tienen sus correspondientes secuencias mapeadas.
 
 **Gen 7; vista general.** ![](images/gen%207.jpg){width="548"}\
