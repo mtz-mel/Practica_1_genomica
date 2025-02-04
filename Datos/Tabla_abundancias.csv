@@ -1,0 +1,35 @@
+Gen A;Gen  B;Gen  C;Gen D;Gen E;Gen  F;Gen  G;Gen H ;Gen I ;Gen J
+subseq_1;subseq_32;subseq_2;subseq_6 ;subseq_12;subseq_21;subseq_19;subseq_24;subseq_3;subseq_4 
+subseq_5 ;subseq_55;subseq_22;subseq_42;subseq_17;subseq_22;subseq_20;subseq_27;subseq_8 ;subseq_7 
+subseq_9;subseq_76;subseq_39;subseq_66;subseq_16;subseq_35;subseq_25;subseq_30;subseq_14;subseq_13 
+subseq_10;subseq_78;subseq_40;subseq_67;subseq_34;subseq_37;subseq_29;subseq_31;subseq_15;subseq_16
+subseq_11;subseq_81;subseq_52;subseq_75;subseq_49;subseq_48;subseq_36;subseq_33;subseq_18;subseq_23
+subseq_28;subseq_85;subseq_56;subseq_82;subseq_61;subseq_62;subseq_45;subseq_43;subseq_50;subseq_51
+subseq_38;subseq_86;subseq_74;subseq_89;subseq_26;subseq_65;subseq_46;subseq_44;subseq_53;subseq_58
+subseq_41;subseq_109;subseq_108;subseq_92;subseq_60;subseq_69;subseq_54;subseq_57;subseq_88;subseq_57
+subseq_47;subseq_113;subseq_136;subseq_94;subseq_143;subseq_121;subseq_63;subseq_72;subseq_104;subseq_83
+subseq_59;subseq_118;subseq_149;subseq_102;subseq_165;subseq_146;subseq_70;subseq_93;subseq_116;subseq_200
+subseq_60;subseq_119;subseq_150;subseq_103;subseq_172;subseq_179;subseq_77;subseq_84;subseq_120;subseq_64
+subseq_71;subseq_122;subseq_155;subseq_106;subseq_173;;subseq_79;subseq_95;subseq_124;subseq_68
+subseq_73;subseq_125;subseq_183;subseq_128;subseq_175;;subseq_80;subseq_96;subseq_154;subseq_83
+subseq_90;subseq_126;subseq_197;subseq_132;subseq_186;;subseq_97;subseq_87;subseq_158;subseq_100
+subseq_91;subseq_129;subseq_198;subseq_144;;;subseq_110;subseq_93;subseq_160;subseq_123
+subseq_98;subseq_140;;subseq_145;;;subseq_131;subseq_95;subseq_164;subseq_142
+subseq_112;subseq_151;;subseq_168;;;subseq_134;subseq_96;subseq_176;subseq_161
+subseq_114;subseq_162;;subseq_169;;;subseq_139;subseq_99;;subseq_166
+subseq_117;subseq_163;;subseq_170;;;subseq_147;subseq_101;;subseq_174
+subseq_135;subseq_178;;subseq_184;;;subseq_152;subseq_105;;
+subseq_138;subseq_180;;subseq_187;;;subseq_156;subseq_107;;
+subseq_148;subseq_181;;subseq_199;;;subseq_157;subseq_115;;
+subseq_190;subseq_191;;;;;subseq_159;subseq_127;;
+subseq_192;subseq_195;;;;;subseq_167;subseq_130;;
+subseq_194;subseq_200;;;;;subseq_185;subseq_133;;
+subseq_196;;;;;;;subseq_137;;
+;;;;;;;subseq_141;;
+;;;;;;;subseq_153;;
+;;;;;;;subseq_171;;
+;;;;;;;subseq_177;;
+;;;;;;;subseq_182;;
+;;;;;;;subseq_188;;
+;;;;;;;subseq_189;;
+;;;;;;;subseq_193;;
