@@ -53,7 +53,7 @@ for (nombre_gen in names(genes)) {
 
 ################################################################################
 
-## Gráfica
+## Gráfica de Abundancia de subsecuencias únicas por Gen 
 
 library(ggplot2)
 
@@ -98,7 +98,15 @@ for (nombre_gen in names(genes)) {
 
 ################################################################################
 
-## Gráfica
+## Gráfica de Abundancia de subsecuencias totales por Gen 
+
+
+G_AT<- ggplot( abundancia_subsecuencias_totales, aes (x= Gen, y=Total_subsecuencias_por_gen , fill = Total_subsecuencias_por_gen)) + 
+  geom_bar(stat = "identity" ) +
+  labs (title = "Abundancia de subsecuencias totales por Gen ", 
+        x= "Gen", y= "N de subsecuencias")
+
+print (G_AT)
 
 ################################################################################
 ## Finalmente decidimos hacer otro data frame, para identificar que genes contiene
@@ -140,4 +148,3 @@ for (nombre_subsecuencia in names(subsecuencias)) {
 
 ################################################################################
 
-## No se si de este también poner gráfica
