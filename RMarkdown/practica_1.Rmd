@@ -7,9 +7,26 @@ output: html_document
 
 ## Evidencia fotografica.
 
-**Gen 5 y Gen 6; vista general.**
-![](images/gen%208.jpg){width="447"}  
-Aqui se observa las secuencias de los genes E y F, los cuales tienen sus correspondientes secuencias mapeadas. 
+**Gen A.**\
+![](images/GEN1.jpg){width="449"}\
+**Figura 1.** En esta imagen se observa al gen A con su mapeo correspondiente.
 
-**Gen 7; vista general.** ![](images/gen%207.jpg){width="548"}  
-En esta imagen se observa el gen 7. Transcrito G con el mapeo de secuencias. 
+**Gen B**\
+![](images/GEN2.jpg){width="451"}\
+**Figura 2** Mapeo del gen B.
+
+**Gen C**\
+![](images/GEN3.jpg){width="445"}\
+**Figura 3** Mapeo del gen C
+
+**Gen D**\
+![](images/GEN4.jpg){width="475"}\
+**Figura 4** Mapeo gen D.
+
+**Gen E y Gen F**\
+![](images/gen%208.jpg){width="483"}\
+**Figura 5** Aqui se observa las secuencias de los genes E y F, los cuales tienen sus correspondientes secuencias mapeadas.
+
+**Gen 7; vista general.**\
+![](images/gen%207.jpg){width="548"}\
+**Figura 6** En esta imagen se observa el gen 7. Transcrito G con el mapeo de secuencias.
