@@ -49,6 +49,47 @@ Durante esta práctica se hizo el mapeo físico, este fue complementado con el m
 # **Gráficas**
 
 ```{r}
+library(Biostrings)
+
+genes <- readDNAStringSet("../Datos/genes.FASTA")
+print(genes)
+
+subsecuencias <- readDNAStringSet("../Datos/subsecuencias.FASTA")
+print(subsecuencias)
+abundancia_subsecuencias_unicas <- data.frame(
+  Gen = character(), 
+  Subsecuencias_unicas_por_gen = integer()
+)
+
+# 1. Crear otro data frame para almacenar los resultados
+abundancia_subsecuencias_totales <- data.frame(
+  Gen = character(), 
+  Total_subsecuencias_por_gen = integer()
+)
+
+## 2. Ciclo for para recorrer cada gen, en busca de la subsecuencia:
+for (nombre_gen in names(genes)) {
+  contador_subsecuencias_totales <- 0  
+  
+  ## Recorrer cada subsecuencia
+  for (nombre_subsecuencia in names(subsecuencias)) {
+    ## Conteo de cuántas veces aparece la subsecuencia en el gen
+    conteo <- countPattern(subsecuencias[[nombre_subsecuencia]], genes[[nombre_gen]])
+    
+    ## Sumar el total de coincedencias, aunque sea una misma subsecuencia
+    contador_subsecuencias_totales <- contador_subsecuencias_totales + conteo  
+  }
+  
+## Guardar el resultado de la suma del conteo en el data frame
+  abundancia_subsecuencias_totales <- rbind(
+    abundancia_subsecuencias_totales, 
+    data.frame(Gen = nombre_gen, Total_subsecuencias_por_gen = contador_subsecuencias_totales)
+  )
+}
+
+
+
+
 library(ggplot2)
 
 G_AT<- ggplot( abundancia_subsecuencias_totales, aes (x= Gen, y=Total_subsecuencias_por_gen , fill = Total_subsecuencias_por_gen)) + geom_bar(stat = "identity" ) + labs (title = "Abundancia de subsecuencias totales por Gen ", x= "Gen", y= "N.° de subsecuencias")
@@ -58,6 +99,30 @@ print (G_AT)
 ```
 
 ```{r}
+
+## 2. Ciclo for para recorrer cada gen, en busca de la subsecuencia:
+
+for (nombre_gen in names(genes)) {
+  contador_subsecuencias_unicas <- 0  ## Contador iniciado en 0
+  
+  ## Recorrer cada subsecuencia
+  for (nombre_subsecuencia in names(subsecuencias)) {
+    ## Conteo de cuántas veces aparece la subsecuencia en el gen
+    conteo <- countPattern(subsecuencias[[nombre_subsecuencia]], genes[[nombre_gen]])
+    
+    ## Si la subsecuencia aparece al menos una vez, aumentar el contador (solo se
+    ## toma en cuenta si aparece en el gen, no cuantas veces lo hace)
+    if (conteo > 0) {  
+      contador_subsecuencias_unicas <- contador_subsecuencias_unicas + 1  
+    }
+  }
+  
+## 3. Guardar los resultados del conteo en el data frame
+  abundancia_subsecuencias_unicas <- rbind(
+    abundancia_subsecuencias_unicas, 
+    data.frame(Gen = nombre_gen, Subsecuencias_unicas_por_gen = contador_subsecuencias_unicas)
+  )
+}
 library(ggplot2)
 
 G_AU<- ggplot( abundancia_subsecuencias_unicas, aes (x= Gen, y= Subsecuencias_unicas_por_gen , fill = Subsecuencias_unicas_por_gen)) + 
