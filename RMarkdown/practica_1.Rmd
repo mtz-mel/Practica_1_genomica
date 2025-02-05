@@ -126,3 +126,33 @@ G_AU<- ggplot( abundancia_subsecuencias_unicas, aes (x= Gen, y= Subsecuencias_un
 print (G_AU)
 
 ```
+
+```{r}
+resultado_subsecuencias_genes <- data.frame(
+  Subsecuencia = character(), 
+  Genes = character()
+)
+
+for (nombre_subsecuencia in names(subsecuencias)) {
+  genes_con_subsecuencia <- c() 
+  for (nombre_gen in names(genes)) {
+    conteo <- countPattern(subsecuencias[[nombre_subsecuencia]], genes[[nombre_gen]])
+    
+    
+    if (conteo > 0) {  
+      genes_con_subsecuencia <- c(genes_con_subsecuencia, nombre_gen)
+    }
+  }
+  
+  resultado_subsecuencias_genes <- rbind(
+    resultado_subsecuencias_genes, 
+    data.frame(
+      Subsecuencia = nombre_subsecuencia, 
+      Genes = paste(genes_con_subsecuencia, collapse = ", ")
+    )
+  )
+}
+
+print(resultado_subsecuencias_genes)
+```
+
