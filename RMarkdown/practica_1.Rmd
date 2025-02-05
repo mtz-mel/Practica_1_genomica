@@ -5,8 +5,8 @@ date: "2025-02-03"
 output: html_document
 ---
 
-**Introducción**  
-La tecnologia de rna-seq es un tipo de secuenciacion de nueva generacion que permite cuantificar la presencia de RNAm de una muestra, principalmente usado para mapear cambios y secuencias en el genoma, dentro de sus funciones permite determinar la expresion de genes, splicing alternativo, ARN no codificante, y el estudio del transcriptoma de una celula unica.  
+**Introducción**\
+La tecnologia de rna-seq es un tipo de secuenciacion de nueva generacion que permite cuantificar la presencia de RNAm de una muestra, principalmente usado para mapear cambios y secuencias en el genoma, dentro de sus funciones permite determinar la expresion de genes, splicing alternativo, ARN no codificante, y el estudio del transcriptoma de una celula unica.\
 Esta tecnica ha ganado popularidad debido a que puede ser usada para el diagnostico de enfermedades que se consideran raras, debido a la capacidad de esta tecnologia de analizar todos los genes expresados, a comparacion de las pasadas que solo analizaban regiones especificas dentro del genoma.
 
 **Objetivos**
@@ -55,61 +55,38 @@ Los mapeos ambiguos ocurren cuando una secuencia, en su mayoría corta, aparece 
 
 Durante esta práctica se hizo el mapeo físico, este fue complementado con el mapeo realizado por los ciclos for donde se buscó cada transcrito/subsecuencia, se realizó el conteo de cuantas veces en el gen.
 
-```{r}
-## Cargar la librería necesaria
+```{r message=FALSE, warning=FALSE}
 
 library(Biostrings)
 
-## Los datos de la práctica se transformaron a formato fasta para que fuera más
-## facil su trabajo en biostrings.
-
-genes <- readDNAStringSet("Datos/genes.FASTA")
+genes <- readDNAStringSet("../Datos/genes.FASTA")
 print(genes)
 
-subsecuencias <- readDNAStringSet("Datos/subsecuencias.FASTA")
+subsecuencias <- readDNAStringSet("../Datos/subsecuencias.FASTA")
 print(subsecuencias)
-```
 
-```{r}
-## Recopilamos en una base de datos la cantidad de subsecuencias diferentes que 
-## había en un gen, sin importar la cantidad de veces que aparece una misma subsecuencia
-## en el mismo, es decir si aparece 1 vez o 10 veces las coincidencias serán igual a 1.
-
-## 1. Crear un data frame para almacenar los resultados
-
-abundancia_subsecuencias_unicas <- data.frame(
+abundancia_subsecuencias_totales <- data.frame(
   Gen = character(), 
-  Subsecuencias_unicas_por_gen = integer()
+  Total_subsecuencias_por_gen = integer()
 )
 
-
-## 2. Ciclo for para recorrer cada gen, en busca de la subsecuencia:
-
 for (nombre_gen in names(genes)) {
-  contador_subsecuencias_unicas <- 0  ## Contador iniciado en 0
-  
-  ## Recorrer cada subsecuencia
+  contador_subsecuencias_totales <- 0  
   for (nombre_subsecuencia in names(subsecuencias)) {
-    ## Conteo de cuántas veces aparece la subsecuencia en el gen
     conteo <- countPattern(subsecuencias[[nombre_subsecuencia]], genes[[nombre_gen]])
-    
-    ## Si la subsecuencia aparece al menos una vez, aumentar el contador (solo se
-    ## toma en cuenta si aparece en el gen, no cuantas veces lo hace)
-    if (conteo > 0) {  
-      contador_subsecuencias_unicas <- contador_subsecuencias_unicas + 1  
-    }
+    contador_subsecuencias_totales <- contador_subsecuencias_totales + conteo  
   }
-  
-## 3. Guardar los resultados del conteo en el data frame
-  abundancia_subsecuencias_unicas <- rbind(
-    abundancia_subsecuencias_unicas, 
-    data.frame(Gen = nombre_gen, Subsecuencias_unicas_por_gen = contador_subsecuencias_unicas)
+
+  abundancia_subsecuencias_totales <- rbind(
+    abundancia_subsecuencias_totales, 
+    data.frame(Gen = nombre_gen, Total_subsecuencias_por_gen = contador_subsecuencias_totales)
   )
 }
+
+print(abundancia_subsecuencias_totales)
 ```
 
-
-```{r}
+```{r message=FALSE, warning=FALSE}
 library(ggplot2)
 
 G_AT<- ggplot( abundancia_subsecuencias_totales, aes (x= Gen, y=Total_subsecuencias_por_gen , fill = Total_subsecuencias_por_gen)) + geom_bar(stat = "identity" ) + labs (title = "Abundancia de subsecuencias totales por Gen ", x= "Gen", y= "N de subsecuencias")
@@ -117,7 +94,34 @@ G_AT<- ggplot( abundancia_subsecuencias_totales, aes (x= Gen, y=Total_subsecuenc
 print (G_AT)
 ```
 
-```{r}
+```{r message=FALSE, warning=FALSE}
+
+abundancia_subsecuencias_unicas <- data.frame(
+  Gen = character(), 
+  Subsecuencias_unicas_por_gen = integer()
+)
+
+
+for (nombre_gen in names(genes)) {
+  contador_subsecuencias_unicas <- 0  
+  for (nombre_subsecuencia in names(subsecuencias)) {
+    conteo <- countPattern(subsecuencias[[nombre_subsecuencia]], genes[[nombre_gen]])
+    if (conteo > 0) {  
+      contador_subsecuencias_unicas <- contador_subsecuencias_unicas + 1  
+    }
+  }
+  
+  abundancia_subsecuencias_unicas <- rbind(
+    abundancia_subsecuencias_unicas, 
+    data.frame(Gen = nombre_gen, Subsecuencias_unicas_por_gen = contador_subsecuencias_unicas)
+  )
+}
+
+print(abundancia_subsecuencias_unicas)
+```
+
+
+```{r message=FALSE, warning=FALSE}
 library(ggplot2)
 
 G_AU<- ggplot( abundancia_subsecuencias_unicas, aes (x= Gen, y= Subsecuencias_unicas_por_gen , fill = Subsecuencias_unicas_por_gen)) + 
@@ -127,3 +131,32 @@ G_AU<- ggplot( abundancia_subsecuencias_unicas, aes (x= Gen, y= Subsecuencias_un
 
 print (G_AU)
 ```
+
+```{r message=FALSE, warning=FALSE}
+resultado_subsecuencias_genes <- data.frame(
+  Subsecuencia = character(), 
+  Genes = character()
+)
+
+for (nombre_subsecuencia in names(subsecuencias)) {
+  genes_con_subsecuencia <- c()
+  for (nombre_gen in names(genes)) {
+    conteo <- countPattern(subsecuencias[[nombre_subsecuencia]], genes[[nombre_gen]])
+    if (conteo > 0) {  
+      genes_con_subsecuencia <- c(genes_con_subsecuencia, nombre_gen)
+    }
+  }
+  
+  resultado_subsecuencias_genes <- rbind(
+    resultado_subsecuencias_genes, 
+    data.frame(
+      Subsecuencia = nombre_subsecuencia, 
+      Genes = paste(genes_con_subsecuencia, collapse = ", ")
+    )
+  )
+}
+
+
+print(resultado_subsecuencias_genes)
+```
+
