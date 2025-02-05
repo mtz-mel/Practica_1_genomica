@@ -429,35 +429,9 @@ gen.</p>
 <pre class="r"><code>library(Biostrings)
 
 genes &lt;- readDNAStringSet(&quot;../Datos/genes.FASTA&quot;)
-print(genes)</code></pre>
-<pre><code>## DNAStringSet object of length 10:
-##      width seq                                              names               
-##  [1]   320 AGCTTTTCATTCTGACTGCAACG...GGCTTTTTTTTTCGACCAAAGG GEN_A
-##  [2]   320 TAACGAGGTAACAACCATGCGAG...GATCAGGAATTTGCCCAAATAA GEN_B
-##  [3]   320 AACATGTCCTGCATGGCATTAGT...GCTTGGACGCAACGGTTCCGAC GEN_C
-##  [4]   160 TACTCTGCTGCGGTGCTGGCTGC...ATGGAGCTTTCCTACTTCGGCG GEN_D
-##  [5]   239 CTAAAGTTCTTCACCCCCGCACC...GTCTTTGCAGCGATGTCACGCG GEN_E
-##  [6]   160 CCCGTATTTCCGTGGTGCTGATT...AGCCGCTGGCAGTGACGGAACG GEN_F
-##  [7]   480 GCTGGCCATTATCTCGGTGGTAG...ACCCGGTCATTGTTGACTGCAC GEN_G
-##  [8]   560 TTCCAGCCAGGCAGTGGCGGATC...AAGGCCCGTGATGAAGGAAAAG GEN_H
-##  [9]   240 TTTTGCGCTATGTTGGCAATATT...TCATGGAAGTTAGGAGTCTGAC GEN_I
-## [10]   320 ATGGTTAAAGTTTATGCCCCGGC...CCTGTTCGGTGGTCGCGGCGCT GEN_J</code></pre>
-<pre class="r"><code>subsecuencias &lt;- readDNAStringSet(&quot;../Datos/subsecuencias.FASTA&quot;)
-print(subsecuencias)</code></pre>
-<pre><code>## DNAStringSet object of length 200:
-##       width seq                                             names               
-##   [1]    11 GGCTGACGCGT                                     subseq_1 
-##   [2]    12 CATGTCCTGCAT                                    subseq_2 
-##   [3]    18 TTGCTGATCTGCTACGTA                              subseq_3 
-##   [4]    19 AGTGGCGATGACCCTGGAA                             subseq_4 
-##   [5]    20 AGGAAACACAGAAAAAAGCC                            subseq_5 
-##   ...   ... ...
-## [196]    13 TTAACCAATATAG                                   subseq_196 
-## [197]    20 GGCAGTGCCCGGATAGCATC                            subseq_197 
-## [198]    20 CGTATTAGAAGCGCGCGGTC                            subseq_198 
-## [199]    13 GGACGTTGACGGG                                   subseq_199 
-## [200]     4 GTGG                                            subseq_200</code></pre>
-<pre class="r"><code>abundancia_subsecuencias_unicas &lt;- data.frame(
+subsecuencias &lt;- readDNAStringSet(&quot;../Datos/subsecuencias.FASTA&quot;)
+
+abundancia_subsecuencias_unicas &lt;- data.frame(
   Gen = character(), 
   Subsecuencias_unicas_por_gen = integer()
 )
@@ -479,7 +453,19 @@ for (nombre_gen in names(genes)) {
   )
 }
 
-library(ggplot2)
+print(abundancia_subsecuencias_totales)</code></pre>
+<pre><code>##      Gen Total_subsecuencias_por_gen
+## 1  GEN_A                          49
+## 2  GEN_B                          50
+## 3  GEN_C                          43
+## 4  GEN_D                          33
+## 5  GEN_E                          27
+## 6  GEN_F                          22
+## 7  GEN_G                          58
+## 8  GEN_H                          88
+## 9  GEN_I                          39
+## 10 GEN_J                          35</code></pre>
+<pre class="r"><code>library(ggplot2)
 
 G_AT&lt;- ggplot( abundancia_subsecuencias_totales, aes (x= Gen, y=Total_subsecuencias_por_gen , fill = Total_subsecuencias_por_gen)) + geom_bar(stat = &quot;identity&quot; ) + labs (title = &quot;Abundancia de subsecuencias totales por Gen &quot;, x= &quot;Gen&quot;, y= &quot;N.° de subsecuencias&quot;)
 
@@ -499,7 +485,20 @@ print (G_AT)</code></pre>
     data.frame(Gen = nombre_gen, Subsecuencias_unicas_por_gen = contador_subsecuencias_unicas)
   )
 }
-library(ggplot2)
+
+print(abundancia_subsecuencias_unicas)</code></pre>
+<pre><code>##      Gen Subsecuencias_unicas_por_gen
+## 1  GEN_A                           29
+## 2  GEN_B                           33
+## 3  GEN_C                           28
+## 4  GEN_D                           29
+## 5  GEN_E                           23
+## 6  GEN_F                           20
+## 7  GEN_G                           42
+## 8  GEN_H                           50
+## 9  GEN_I                           29
+## 10 GEN_J                           30</code></pre>
+<pre class="r"><code>library(ggplot2)
 
 G_AU&lt;- ggplot( abundancia_subsecuencias_unicas, aes (x= Gen, y= Subsecuencias_unicas_por_gen , fill = Subsecuencias_unicas_por_gen)) + 
   geom_bar(stat = &quot;identity&quot; ) +

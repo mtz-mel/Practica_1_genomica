@@ -52,10 +52,8 @@ Durante esta práctica se hizo el mapeo físico, este fue complementado con el m
 library(Biostrings)
 
 genes <- readDNAStringSet("../Datos/genes.FASTA")
-print(genes)
-
 subsecuencias <- readDNAStringSet("../Datos/subsecuencias.FASTA")
-print(subsecuencias)
+
 abundancia_subsecuencias_unicas <- data.frame(
   Gen = character(), 
   Subsecuencias_unicas_por_gen = integer()
@@ -77,6 +75,14 @@ for (nombre_gen in names(genes)) {
     data.frame(Gen = nombre_gen, Total_subsecuencias_por_gen = contador_subsecuencias_totales)
   )
 }
+
+print(abundancia_subsecuencias_totales)
+
+```
+
+
+
+```{r message=FALSE, warning=FALSE}
 
 library(ggplot2)
 
@@ -102,6 +108,14 @@ for (nombre_gen in names(genes)) {
     data.frame(Gen = nombre_gen, Subsecuencias_unicas_por_gen = contador_subsecuencias_unicas)
   )
 }
+
+print(abundancia_subsecuencias_unicas)
+
+```
+
+
+
+```{r message=FALSE, warning=FALSE}
 library(ggplot2)
 
 G_AU<- ggplot( abundancia_subsecuencias_unicas, aes (x= Gen, y= Subsecuencias_unicas_por_gen , fill = Subsecuencias_unicas_por_gen)) + 
